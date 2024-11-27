@@ -1,0 +1,72 @@
+.app-contain-principal{
+    padding: 20px;
+}
+
+.app-contain-saldos{
+    display: flex;
+    margin-top: 2vh;
+    justify-content: space-around;
+}
+
+.saldo-totalito, .saldo-actualito{
+    width: 15vw;
+    height: 15vh;
+    border: 1px solid black;
+    font-size: 1.3rem;
+    text-align: center;
+    border-radius: 24px;
+    display: flex; /* Activa Flexbox */
+    align-items: center; /* Centra el contenido verticalmente */
+    justify-content: center;
+}
+
+.seccion-gasto {
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid black;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.titul-agregar{
+    text-align: center;
+}
+
+.App-filtrado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.registro-form {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    border: 1px solid black;
+}
+
+.form-group {
+    margin-bottom: 5px;
+}
+
+button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: auto;
+    width: 10vw;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+
+
+
