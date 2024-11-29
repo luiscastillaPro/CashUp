@@ -6,18 +6,19 @@ import ListaGasto from './componentes/ListaGastos.jsx';
 import GastosCategoria from './componentes/GastosCategoria.jsx';
 import Login from './componentes/Login.jsx';
 import Registro from './componentes/Registro.jsx';
-import NuevoSaldo from './componentes/Nuevosaldo.jsx'; // Importa el nuevo componente NuevoSaldo
+import NuevoSaldo from './componentes/Nuevosaldo.jsx';
 import { Route, Routes } from 'react-router-dom';
 import RutaPrivada from "./componentes/RutaPrivada.jsx";
+import Header from "./componentes/Header.jsx";
 
 const Layout = () => {
   return (
     <div className="layout-container">
+      <Header />
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
         
-        {/* Ruta para las categorías, lista de gastos, editar y la app principal, protegidas */}
         <Route path="/categorias" element={
           <RutaPrivada>
             <GastosCategoria />
@@ -36,14 +37,12 @@ const Layout = () => {
           </RutaPrivada>
         } />
 
-        {/* Ruta para el perfil donde se podrá ver y actualizar el saldo */}
         <Route path="/perfil" element={
           <RutaPrivada>
             <NuevoSaldo />
           </RutaPrivada>
         } />
         
-        {/* Ruta principal de la app, protegida */}
         <Route path="/" element={
           <RutaPrivada>
             <App />

@@ -14,7 +14,11 @@
     border: 1px solid #90caf9;
     border-radius: 8px;
     padding: 0 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: 
+        linear-gradient(#13151a, #13151a) padding-box, /* Fondo interno sólido */
+        linear-gradient(145deg, #e81cff, #40c9ff) border-box; /* Borde degradado */
+    border: 2px solid transparent; /* Necesario para el borde degradado */
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
@@ -26,7 +30,7 @@
     background: none;
     font-size: 1rem;
     font-weight: bold;
-    color: #333;
+    color: #ffffff;
     text-align: left;
     cursor: pointer;
     padding: 10px 0;
@@ -48,6 +52,7 @@
 .dale-calendario {
     position: absolute;
     top: 120%;
+    color: black;
     width: 100%;
     left: 0;
     z-index: 10;
@@ -63,6 +68,7 @@
 .rdp-caption_label {
     font-size: 20px;
     font-weight: bold;
+    color: black;
 }
 
 .rdp-month_caption{

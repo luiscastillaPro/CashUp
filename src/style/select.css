@@ -1,11 +1,11 @@
 .select-container {
     position: relative;
-    margin: 10px 0;
     padding: 10px;
-    background-color: #e3f2fd;
-    border: 1px solid #90caf9;
+    background: 
+        linear-gradient(#13151a, #13151a) padding-box, /* Fondo interno sólido */
+        linear-gradient(145deg, #e81cff, #40c9ff) border-box; /* Borde degradado */
+    border: 2px solid transparent; /* Necesario para el borde degradado */
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     font-size: 1rem;
     width: 13rem;
     cursor: pointer;
@@ -16,13 +16,13 @@
     justify-content: space-between;
     align-items: center;
     font-weight: bold;
-    color: #333;
+    color: #ffffff;
 }
 
 .select-arrow {
     font-size: 1rem;
     font-weight: bold;
-    color: #333;
+    color: #ffffff;
     transition: transform 0.3s ease;
 }
 

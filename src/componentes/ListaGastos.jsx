@@ -101,7 +101,7 @@ const ListaGastos = () => {
                 {Object.keys(gastosAgrupados).length > 0 ? (
                     Object.keys(gastosAgrupados).map((fecha, index) => (
                         <div key={index} className="lista-fecha">
-                            <h2>{fecha}</h2>
+                            <h2 className="fecha-titul">{fecha}</h2>
                             {gastosAgrupados[fecha].map((gasto) => (
                                 <div key={gasto.id} className="lista-contact">
                                     <div className="lista-contatin-opciones">

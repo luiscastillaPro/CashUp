@@ -1,63 +1,57 @@
 .header {
     display: flex;
-    justify-content: space-between; /* Distribuye los elementos con espacio entre ellos */
-    align-items: center; /* Centra verticalmente los elementos */
-    width: 100%; /* Asegura que ocupe todo el ancho */
-    padding: 0.5rem 1rem; /* Espaciado interno */
+    align-items: center;
+    width: 100%;
+    padding: 2vh 10vw;
+    background: black;
 }
 
+.logito {
+    width: 200px;
+    height: auto;
+  }
+
 .header-nav {
-    flex: 1; /* Ocupará todo el espacio disponible */
+    flex: 1;
     display: flex;
-    justify-content: center; /* Centra el contenido horizontalmente */
-    align-items: center; /* Centra verticalmente el contenido */
-    gap: 1rem; /* Espacio entre los elementos */
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .header-container-opciones {
     display: flex;
     align-items: center;
-    gap: 1rem; /* Espacio entre los enlaces */
-    border: 1px solid black;
+    gap: 3rem;
+    border: 1px solid transparent;
     border-radius: 16px;
-    padding: 0.2rem 1rem;
-    margin-left: 3rem;
+    padding: 0.7rem 1.5rem;
+    background: 
+        linear-gradient(#000000, #000000) padding-box,
+        linear-gradient(145deg, #e81cff, #40c9ff) border-box;
 }
 
 .header-link {
     display: flex;
     align-items: center;
-    padding: 10px 10px;
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: bold;
     border: none;
-    color: black;
+    color: rgb(255, 255, 255);
     cursor: pointer;
+    background: none;
 }
 
 .header-link-icon {
-    margin-right: 8px;
+    margin-right: 6px;
 }
 
 .header-link:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 .header-cont-cerrar {
     margin-left: auto; /* Empuja este elemento al extremo derecho */
-}
-
-.cerrar-sesion-btn {
-    background: rgb(0, 0, 0);
-    color: rgb(255, 255, 255);
-    padding: 0.5rem 1rem; /* Ajusta el tamaño del botón */
-    border: none;
-    width: auto;
-    border-radius: 5px;
-    text-align: center;
-    font-size: 1rem;
-    cursor: pointer;
 }
 
 .header-perfil-container {

@@ -1,66 +1,55 @@
-/* General Container */
 .lista-container {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
-    font-family: Arial, sans-serif;
+    color: white;
 }
 
-/* Navbar Styles */
 .lista-navbar {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin-bottom: 20px;
 }
 
 .categoria-button {
     background: none;
-    border: none;
+    border: 1px solid white;
     cursor: pointer;
     font-size: 18px;
-    color: #555;
-    margin-right: 10px;
-    display: flex;
-    align-items: center;
-}
-
-.categoria-button:hover {
-    color: #333;
 }
 
 .lista-titulo {
-    font-size: 24px;
+    font-size: 2rem;
     font-weight: bold;
-    color: #333;
 }
 
-/* Gastos List Container */
+.categoria-button:hover {
+    scale: 1.1;
+}
+
+.fecha-titul{
+    text-align: center;
+}
+
 .lista-container-gasto {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 1.5rem;
 }
 
-/* Individual Gasto Row */
 .lista-contact {
-    border: 1px solid #ddd;
     border-radius: 8px;
     padding: 15px;
     background-color: #f9f9f9;
-    transition: box-shadow 0.3s ease;
+    margin-bottom: .2rem;
 }
 
 .lista-contatin-opciones{
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 
-.lista-contact:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Categoria Section */
 .lista-categoria {
     display: flex;
     align-items: center;
@@ -71,68 +60,62 @@
 }
 
 .lista-categoria:before {
-    content: "📁"; /* Default icon */
+    content: "📁";
     margin-right: 8px;
     font-size: 18px;
 }
 
-/* Icons for specific categories */
 .lista-categoria[data-categoria="hogar"]:before {
-    content: "🏠"; /* House icon */
+    content: "🏠";
 }
 
 .lista-categoria[data-categoria="comida"]:before {
-    content: "🍴"; /* Food icon */
+    content: "🍴";
 }
 
 .lista-categoria[data-categoria="transporte"]:before {
-    content: "🚗"; /* Car icon */
+    content: "🚗";
 }
 
 .lista-categoria[data-categoria="salud"]:before {
-    content: "💊"; /* Health icon */
+    content: "💊";
 }
 
 .lista-categoria[data-categoria="otros"]:before {
-    content: "🛠️"; /* Other icon */
+    content: "🛠️";
 }
 
 .lista-categoria[data-categoria="ropa"]:before {
-    content: "👚"; /* Clothes icon */
+    content: "👚";
 }
 
 .lista-categoria[data-categoria="cuentas y pagos"]:before {
-    content: "💳"; /* Credit Card icon */
+    content: "💳";
 }
 
 .lista-categoria[data-categoria="salud e higiene"]:before {
-    content: "🧴"; /* Hygiene icon */
+    content: "🧴";
 }
 
 .lista-categoria[data-categoria="diversion"]:before {
-    content: "🎉"; /* Party / Fun icon */
+    content: "🎉";
 }
 
-
-/* Description Section */
 .lista-descripcion {
     flex: 2;
     text-align: center;
-    font-size: 14px;
+    font-size: 1rem;
     color: #666;
-    font-style: italic;
 }
 
-/* Amount Section */
 .lista-cantidad {
     font-size: 16px;
     font-weight: bold;
     color: #333;
     flex: 1;
-    text-align: right;
+    text-align: center;
 }
 
-/* Buttons Section */
 .lista-botones {
     display: flex;
     gap: 10px;
@@ -152,7 +135,6 @@
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Edit Button */
 .lista-editar {
     color: #007bff;
     border-color: #007bff;
@@ -163,7 +145,6 @@
     color: #fff;
 }
 
-/* Delete Button */
 .lista-eliminar {
     color: #dc3545;
     border-color: #dc3545;
@@ -174,7 +155,6 @@
     color: #fff;
 }
 
-/* Empty Message */
 .lista-sinregistro {
     text-align: center;
     color: #999;
@@ -182,7 +162,6 @@
     margin: 20px 0;
 }
 
-/* Load More Button */
 .lista-cargar {
     display: flex;
     justify-content: center;
@@ -202,7 +181,6 @@
     background-color: #218838;
 }
 
-/* Add Icon to Load More Button */
 .lista-cargar:before {
     content: "🔄";
     margin-right: 8px;

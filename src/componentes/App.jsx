@@ -8,7 +8,7 @@ import { useAuth } from '../contextos/AuthContext.js';
 import { obtenerGastos } from "../firebase/obtenerGastos.js";
 import { db } from '../firebase/firebaseConfig';
 import '../style/app.css';
-import { doc, getDoc } from "firebase/firestore"; // Funciones necesarias para leer datos de Firestore
+import { doc, getDoc } from "firebase/firestore";
 
 const App = () => {
     const [descripcion, setDescripcion] = useState('');
@@ -16,11 +16,10 @@ const App = () => {
     const [categoria, setCategoria] = useState('Hogar');
     const [fecha, setFecha] = useState(new Date());
     const [gastos, setGastos] = useState([]);
-    const [saldoTotal, setSaldoTotal] = useState(0); // Estado para el saldo total (el que el usuario ingresa)
-    const [saldoActual, setSaldoActual] = useState(0); // Estado para el saldo actual (saldo total - gastos)
+    const [saldoTotal, setSaldoTotal] = useState(0); 
+    const [saldoActual, setSaldoActual] = useState(0);
     const { usuario } = useAuth();
 
-    // Esta función se ejecuta al inicio para obtener los gastos del usuario
     useEffect(() => {
         if (usuario && usuario.uid) {
             obtenerGastos(usuario.uid)
@@ -31,7 +30,6 @@ const App = () => {
         }
     }, [usuario]);
 
-    // Esta función obtiene el saldo total del usuario desde Firestore
     useEffect(() => {
         if (usuario && usuario.uid) {
             const getSaldo = async () => {
@@ -50,14 +48,12 @@ const App = () => {
         }
     }, [usuario]);
 
-    // Calcular el saldo actual (saldo total - suma de gastos)
     useEffect(() => {
         const saldoGastos = gastos.reduce((total, gasto) => total + parseFloat(gasto.cantidad || 0), 0);
         const saldoRestante = saldoTotal - saldoGastos;
         setSaldoActual(saldoRestante); // Establece el saldo actual
     }, [gastos, saldoTotal]);
 
-    // Manejo de cambios en los inputs
     const handleChange = (e) => {
         if (e.target.name === 'Descripcion') {
             setDescripcion(e.target.value);
@@ -66,7 +62,6 @@ const App = () => {
         }
     };
 
-    // Función para obtener el saldo actualizado desde Firestore
     const obtenerSaldoUsuario = async (uid) => {
         try {
             const docRef = doc(db, "usuarios", uid);
@@ -118,26 +113,25 @@ const App = () => {
         }
     };
 
-    // Actualizar saldo total
     const actualizarSaldoTotal = (nuevoSaldo) => {
         setSaldoTotal(nuevoSaldo);  // Actualiza el saldo total localmente
     };
 
     return (
         <div className="app-contain-principal">
-            <Header />
-            
-            {/* Sección de saldos */}
+            <div className="fondo-gamersito">
             <div className="app-contain-saldos">
                 <div className="saldo-totalito">
-                    <h3>Dinero Ingresado: ${saldoTotal}</h3>
+                    <p className="titulo-ingresado">Balance</p>
+                    <div className="saldo-total">$ {saldoTotal}</div>
                 </div>
                 <div className="saldo-actualito">
-                    <h3>Saldo Actual: ${saldoActual}</h3>
+                    <p className="titulo-ingresado">Saldo</p>
+                    <div className="saldo-total">$ {saldoActual}</div>
                 </div>
             </div>
+            </div>
 
-            {/* Sección para agregar gastos */}
             <div className="seccion-gasto">
                 <div className="titul-agregar">
                     <h2>Agregar Nuevo Gasto</h2>
