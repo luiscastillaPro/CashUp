@@ -2,8 +2,7 @@
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 2vh 10vw;
-    background: black;
+    padding: 2vh 7vw;
 }
 
 .logito {
@@ -14,84 +13,98 @@
 .header-nav {
     flex: 1;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
 }
 
 .header-container-opciones {
     display: flex;
     align-items: center;
-    gap: 3rem;
+    gap: 5rem;
     border: 1px solid transparent;
     border-radius: 16px;
-    padding: 0.7rem 1.5rem;
-    background: 
-        linear-gradient(#000000, #000000) padding-box,
-        linear-gradient(145deg, #e81cff, #40c9ff) border-box;
+    padding: 0 1.5rem;
 }
 
 .header-link {
     display: flex;
     align-items: center;
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: bold;
     border: none;
-    color: rgb(255, 255, 255);
+    border-radius: 8px;
+    padding: 10px;
+    color: rgb(169, 33, 187);
     cursor: pointer;
     background: none;
+    transition: background 0.5s, border 0.3s;
+}
+
+.header-link:hover {
+    background: rgb(255, 165, 255);
+    border-radius: 8px;
+}
+
+.header-link.active {
+    background: rgb(255, 165, 255);
+    border-radius: 8px;
+    color: rgb(140, 28, 155);
+}
+
+.header-perfil-container.active .header-link {
+    background: rgb(255, 165, 255);
+    color: rgb(140, 28, 155);
+    border-radius: 8px;
 }
 
 .header-link-icon {
     margin-right: 6px;
 }
 
-.header-link:hover {
-    transform: scale(1.1);
-}
 
 .header-cont-cerrar {
-    margin-left: auto; /* Empuja este elemento al extremo derecho */
+    margin-left: auto; 
 }
 
 .header-perfil-container {
-    position: relative; /* Necesario para posicionar el desplegable */
+    position: relative;
 }
 
 .header-desplegable {
     position: absolute;
-    top: 100%; /* Muestra el contenido debajo del botón */
-    right: 0; /* Alinea el desplegable a la derecha */
-    background-color: #fff; /* Fondo blanco para el desplegable */
-    border: 1px solid #ddd; /* Borde suave */
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para destacar */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 1rem;
-    width: 250px; /* Ancho del desplegable */
-    z-index: 1000; /* Asegura que esté sobre otros elementos */
+    width: 250px;
+    z-index: 1000;
 }
 
 .header-desplegable form {
     display: flex;
-    flex-direction: column; /* Acomoda los elementos verticalmente */
-    gap: 0.5rem; /* Espaciado entre los elementos del formulario */
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .header-desplegable input,
 .header-desplegable button {
-    width: 100%; /* Ocupa todo el ancho del contenedor */
-    padding: 0.5rem; /* Espaciado interno */
-    font-size: 1rem; /* Tamaño del texto */
-    border: 1px solid #ccc; /* Borde ligero */
-    border-radius: 4px; /* Bordes redondeados */
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px; 
 }
 
 .header-desplegable button {
-    background-color: #45a049; /* Color de fondo del botón */
-    color: #fff; /* Texto blanco */
-    cursor: pointer; /* Indica que es interactivo */
+    background-color: #45a049;
+    color: #fff;
+    cursor: pointer;
 }
 
 .header-desplegable button:hover {
-    background-color: #3e8e41; /* Cambia el color al pasar el cursor */
+    background-color: #3e8e41; 
 }

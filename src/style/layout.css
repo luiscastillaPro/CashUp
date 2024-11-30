@@ -3,10 +3,10 @@
     width: 100vw;
 }
 
-.layout-container {
-    background-image: url('../imagenes/segundofondo.jpeg'); /* Ruta de la imagen */
-    background-size: cover; /* Cubre todo el espacio disponible */
-    background-position: center; /* Centra la imagen */
-    min-height: 100vh; /* Asegura que el fondo cubra toda la pantalla */
-  }
+/* .layout-container {
+    background-image: url('../imagenes/segundofondo.jpeg');
+    background-size: cover;
+    background-position: center; 
+    min-height: 100vh; 
+  } */
  

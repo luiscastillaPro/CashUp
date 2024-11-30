@@ -11,6 +11,7 @@ import { formatearCantidad } from "../componentes/TotalGastado";
 import { format, fromUnixTime } from "date-fns";
 import { es } from "date-fns/locale/es";
 import "../style/categoria.css";
+import Header from "./Header";
 
 // Agregar iconos a la librería
 library.add(faHome, faUtensils, faBus, faHeart, faTshirt, faShoppingCart, faGamepad, faArrowLeft);
@@ -70,6 +71,8 @@ const GastosCategoria = () => {
     };
 
     return (
+        <div>
+            <Header />             
         <div className="categoria-container">
             <div className="categoria-header">
                 <button onClick={() => navigate("/")} className="categoria-button">
@@ -126,6 +129,7 @@ const GastosCategoria = () => {
                     );
                 })}
             </div>
+        </div>
         </div>
     );
 };

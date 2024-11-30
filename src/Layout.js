@@ -9,12 +9,10 @@ import Registro from './componentes/Registro.jsx';
 import NuevoSaldo from './componentes/Nuevosaldo.jsx';
 import { Route, Routes } from 'react-router-dom';
 import RutaPrivada from "./componentes/RutaPrivada.jsx";
-import Header from "./componentes/Header.jsx";
 
 const Layout = () => {
   return (
     <div className="layout-container">
-      <Header />
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />

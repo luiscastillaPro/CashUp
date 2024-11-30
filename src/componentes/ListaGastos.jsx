@@ -10,6 +10,7 @@ import { es } from 'date-fns/locale/es';
 import { collection, onSnapshot, query, orderBy, where, limit, startAfter } from "firebase/firestore";
 import '../style/listaGastos.css';
 import borrarGasto from "../firebase/borrarGasto";
+import Header from "./Header";
 
 const ListaGastos = () => {
     const navigate = useNavigate();
@@ -90,6 +91,8 @@ const ListaGastos = () => {
     const gastosAgrupados = agruparGastosPorFecha(gastos);
 
     return (
+        <div>
+            <Header />
         <div className="lista-container">
             <div className="lista-navbar">
                 <button onClick={() => navigate('/')} className="categoria-button">
@@ -138,6 +141,7 @@ const ListaGastos = () => {
                     <button className="lista-cargar" onClick={() => obtenerMasGastos()}>Cargar Más</button>
                 }
             </div>
+        </div>
         </div>
     );
 };

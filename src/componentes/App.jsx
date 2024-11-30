@@ -118,6 +118,8 @@ const App = () => {
     };
 
     return (
+        <div>
+            <Header />
         <div className="app-contain-principal">
             <div className="fondo-gamersito">
             <div className="app-contain-saldos">
@@ -164,6 +166,7 @@ const App = () => {
                     </button>
                 </form>
             </div>
+        </div>
         </div>
     );
 };
