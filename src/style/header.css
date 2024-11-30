@@ -2,7 +2,9 @@
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 2vh 7vw;
+    padding: 1.5vh 7vw;
+    background: white;
+    box-shadow: 0 3px 10px rgb(204, 204, 204);
 }
 
 .logito {
@@ -40,6 +42,17 @@
     background: none;
     transition: background 0.5s, border 0.3s;
 }
+
+.header-saludo{
+    display: flex;
+    align-items: center;
+}
+
+.header-diamante-icon {
+    margin-right: 5px;  /* Espacio entre el icono y el nombre */
+    color: #ff00ea;     /* Color dorado para el diamante */
+    font-size: 20px;     /* Tamaño del icono */
+  }
 
 .header-link:hover {
     background: rgb(255, 165, 255);

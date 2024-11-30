@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase/firebaseConfig"; 
+import { auth, db } from "../firebase/firebaseConfig"; 
 import { useNavigate } from "react-router-dom";
+import { doc, setDoc } from "firebase/firestore"; // Importamos Firestore
 import '../style/registro.css';
 
 const Registro = () => {
@@ -9,6 +10,7 @@ const Registro = () => {
     const [correo, setCorreo] = useState('');
     const [password, setPassword] = useState('');
     const [confirPassword, setConfirPassword] = useState('');
+    const [nombreUsuario, setNombreUsuario] = useState(''); // Agregamos el estado para el nombre de usuario
 
     const handleChange = (e) => {
         switch(e.target.name){
@@ -21,6 +23,9 @@ const Registro = () => {
             case 'confirm-password':
                 setConfirPassword(e.target.value);
                 break;
+            case 'nombre-usuario':
+                setNombreUsuario(e.target.value); // Actualizamos el nombre de usuario
+                break;
             default:
                 break;
         }
@@ -30,15 +35,22 @@ const Registro = () => {
         e.preventDefault();
 
         if (password !== confirPassword) {
-            console.log('las contraseñas no son iguales');
+            console.log('Las contraseñas no son iguales');
             return;
         }
 
-        try{
+        try {
             const userCredential = await createUserWithEmailAndPassword(auth, correo, password);
             console.log("Usuario registrado:", userCredential.user);
+
+            // Guardar el nombre de usuario en Firestore
+            await setDoc(doc(db, "usuarios", userCredential.user.uid), {
+                nombreUsuario: nombreUsuario,
+                email: correo,
+            });
+
             navigate("/login");
-        } catch(error) {
+        } catch (error) {
             console.log(error);
         }
     }
@@ -55,6 +67,18 @@ const Registro = () => {
                 </button>
             </div>
             <form className="registro-form" onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label htmlFor="nombre-usuario">Nombre de Usuario</label>
+                    <input
+                        type="text"
+                        id="nombre-usuario"
+                        name="nombre-usuario"
+                        value={nombreUsuario}
+                        onChange={handleChange}
+                        placeholder="Ingresa tu nombre de usuario"
+                        required
+                    />
+                </div>
                 <div className="form-group">
                     <label htmlFor="email">Correo Electrónico</label>
                     <input

@@ -117,56 +117,67 @@ const App = () => {
         setSaldoTotal(nuevoSaldo);  // Actualiza el saldo total localmente
     };
 
+    // Calcular el total de los ingresos
+    const ingresos = saldoTotal;
+
+    // Calcular el total de los gastos
+    const gastosTotal = gastos.reduce((total, gasto) => total + parseFloat(gasto.cantidad || 0), 0);
+
+    // Calcular el balance (ingresos - gastos)
+    const balance = ingresos - gastosTotal;
+
     return (
         <div>
             <Header />
-        <div className="app-contain-principal">
-            <div className="fondo-gamersito">
-            <div className="app-contain-saldos">
-                <div className="saldo-totalito">
-                    <p className="titulo-ingresado">Balance</p>
-                    <div className="saldo-total">$ {saldoTotal}</div>
+            <div className="app-contain-principal">
+                <div className="app-contain-saldos">
+                    <div className="saldo-totalito">
+                        <p className="titulo-ingresado">Ingresos</p>
+                        <div className="saldo-total">$ {ingresos.toFixed(2)}</div> {/* Muestra los ingresos */}
+                    </div>
+                    <div className="saldo-totalito">
+                        <p className="titulo-ingresado">Gastos</p>
+                        <div className="saldo-total1">- $ {gastosTotal.toFixed(2)}</div> {/* Muestra los gastos */}
+                    </div>
+                    <div className="saldo-totalito">
+                        <p className="titulo-ingresado">Balance</p>
+                        <div className="saldo-total2">$ {balance.toFixed(2)}</div> {/* Muestra el balance */}
+                    </div>
                 </div>
-                <div className="saldo-actualito">
-                    <p className="titulo-ingresado">Saldo</p>
-                    <div className="saldo-total">$ {saldoActual}</div>
-                </div>
-            </div>
-            </div>
 
-            <div className="seccion-gasto">
-                <div className="titul-agregar">
-                    <h2>Agregar Nuevo Gasto</h2>
-                </div>
-                <div className="App-filtrado">
-                    <Select categoria={categoria} setCategoria={setCategoria} />
-                    <DatePicker fecha={fecha} setFecha={setFecha} />
-                </div>
-                <form className="registro-form" onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <input
-                            type="text"
-                            name="Descripcion"
-                            value={descripcion}
-                            onChange={handleChange}
-                            placeholder="Descripción"
-                        />
+                <div className="seccion-gasto">
+                    <div className="titul-agregar">
+                        <h2>Agregar Nuevo Gasto</h2>
                     </div>
-                    <div className="form-group">
-                        <input
-                            type="text"
-                            name="cantidad"
-                            value={cantidad}
-                            onChange={handleChange}
-                            placeholder="$0.00"
-                        />
+                    <div className="App-filtrado">
+                        <Select categoria={categoria} setCategoria={setCategoria} />
+                        <DatePicker fecha={fecha} setFecha={setFecha} />
                     </div>
-                    <button type="submit" className="btn-agregar-gasto">
-                        Agregar Gasto
-                    </button>
-                </form>
+                    <form className="registro-form" onSubmit={handleSubmit}>
+                        <div className="form-group">
+                            <input
+                                type="text"
+                                name="Descripcion"
+                                value={descripcion}
+                                onChange={handleChange}
+                                placeholder="Descripción"
+                            />
+                        </div>
+                        <div className="form-group">
+                            <input
+                                type="text"
+                                name="cantidad"
+                                value={cantidad}
+                                onChange={handleChange}
+                                placeholder="$0.00"
+                            />
+                        </div>
+                        <button type="submit" className="btn-agregar-gasto">
+                            Agregar Gasto
+                        </button>
+                    </form>
+                </div>
             </div>
-        </div>
         </div>
     );
 };

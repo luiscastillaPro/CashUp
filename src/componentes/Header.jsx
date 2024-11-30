@@ -1,23 +1,26 @@
-import React, { useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom"; // Importa useLocation
-import { FaThLarge, FaListAlt, FaUser, FaHome } from "react-icons/fa";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { FaThLarge, FaListAlt, FaUser, FaHome, FaGem } from "react-icons/fa"; 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { signOut } from "firebase/auth";
-import { auth } from "../firebase/firebaseConfig";
-import NuevoSaldo from "./Nuevosaldo.jsx"; // Importamos el componente
+import { auth, db } from "../firebase/firebaseConfig"; // Importamos Firestore
+import { doc, getDoc } from "firebase/firestore"; // Funciones para obtener datos de Firestore
+import NuevoSaldo from "./Nuevosaldo.jsx";
 import "../style/header.css";
 import logo from "../imagenes/logo.png";
 
 const Header = () => {
   const [mostrarDesplegable, setMostrarDesplegable] = useState(false);
+  const [nombreUsuario, setNombreUsuario] = useState(""); // Estado para el nombre de usuario
   const navigate = useNavigate();
-  const location = useLocation(); // Obtiene la ruta actual
+  const location = useLocation();
 
   const cerrarSesion = async () => {
     try {
       await signOut(auth);
       navigate("/login");
+      localStorage.removeItem('nombreUsuario'); // Limpia el nombre de usuario al cerrar sesión
     } catch (error) {
       console.log(error);
     }
@@ -26,8 +29,27 @@ const Header = () => {
   // Verifica si la ruta actual coincide con la ruta del enlace
   const isActive = (path) => location.pathname === path;
 
-  // Agregamos una clase 'active' para "Perfil" cuando el desplegable esté visible
-  const isPerfilActive = () => mostrarDesplegable;
+  // Obtener el nombre de usuario desde Firestore o localStorage cuando el usuario se autentica
+  useEffect(() => {
+    const obtenerNombreUsuario = async () => {
+      // Si el nombre de usuario está en localStorage, lo usamos
+      const usuarioEnLocalStorage = localStorage.getItem('nombreUsuario');
+      if (usuarioEnLocalStorage) {
+        setNombreUsuario(usuarioEnLocalStorage);
+      } else if (auth.currentUser) {
+        // Si no está en localStorage, lo obtenemos de Firestore
+        const docRef = doc(db, "usuarios", auth.currentUser.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          const nombre = docSnap.data().nombreUsuario;
+          setNombreUsuario(nombre);
+          localStorage.setItem('nombreUsuario', nombre); // Guardamos el nombre en localStorage
+        }
+      }
+    };
+
+    obtenerNombreUsuario();
+  }, []); // Se ejecuta solo una vez cuando el componente se monta
 
   return (
     <header className="header">
@@ -53,7 +75,7 @@ const Header = () => {
             <FaListAlt className="header-link-icon" /> Lista de Gastos
           </Link>
           <div
-            className={`header-perfil-container ${isPerfilActive() ? "active" : ""}`}
+            className={`header-perfil-container ${mostrarDesplegable ? "active" : ""}`}
           >
             <button
               className="header-link"
@@ -81,9 +103,9 @@ const Header = () => {
           </div>
         </div>
       </nav>
-      <div>
-        <p>Nombre de usuario</p>
-      </div>
+      <p className="header-saludo">
+          <FaGem className="header-diamante-icon" /> {nombreUsuario ? `${nombreUsuario}` : "Cargando..."}
+        </p>
     </header>
   );
 };
