@@ -1,42 +1,127 @@
-.app-contain-principal{
+.app-contain-principal {
     max-width: 1000px;
     margin: auto;
     margin-top: 3vh;
 }
 
-.app-contain-saldos{
+.app-contain-saldos {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     gap: 5rem;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 }
 
-.saldo-totalito{
+.saldo-totalito {
     background: #ffffff;
-    width: 100%;
+    width: 20%;
     text-align: center;
     padding: 15px 0;
     border-radius: 16px;
     box-shadow: 0 3px 10px rgb(204, 204, 204);
 }
 
-.titulo-ingresado{
+.titulo-ingresado {
     font-size: 1rem;
     font-weight: bold;
-    color: rgb(169, 33, 187);
+    color: rgb(0, 0, 0);
 }
 
-.saldo-total{
+.saldo-total {
     font-size: 2rem;
     color: rgb(45, 226, 54);
 }
 
-.saldo-total1{
+.saldo-total1 {
     font-size: 2rem;
     color: rgb(241, 32, 32);
 }
 
-.saldo-total2{
+.saldo-total2 {
     font-size: 2rem;
+}
+
+.seccion-gasto {
+    width: 100%;
+    background: rgb(255, 255, 255);
+    text-align: center;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 3px 10px rgb(204, 204, 204);
+}
+
+.App-filtrado {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.registro-form-ingreso {
+    width: 40%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+.input-ingreso {
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+    border-radius: 16px;
+    cursor: pointer;
+    background-color: #f4f4f4;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 3px 10px rgb(204, 204, 204);
+    font-size: 1.1rem;
+    box-sizing: border-box;
+    border: 1px solid #f1f1f1;
+    transition: background-color 0.3s ease;
+}
+
+.input-ingreso:hover {
+    background-color: #e9e9e9;
+}
+
+.btn-agregar-gasto {
+    display: block;
+    margin: auto;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #000;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.btn-agregar-gasto:hover {
+    background-color: #333;
+}
+
+.titul-agregar {
+    font-size: 2.3rem;
+}
+
+.input-fecha {
+    width: 100%;
+    max-width: 220px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    color: #5c5c5c;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgb(204, 204, 204);
+    transition: all 0.3s ease;
+}
+
+.input-fecha:hover {
+    border-color: #888;
+    background-color: #f9f9f9;
 }

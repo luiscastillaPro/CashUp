@@ -1,18 +1,30 @@
-.registro-container {
-    max-width: 400px;
-    width: 100%;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.registro-wrapper-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
+.registro-container {
+    max-width: 100%;
+    width: 100%;
+    padding: 30px;
+    border-radius: 15px; /* Bordes redondeados */
+    background: rgba(255, 255, 255, 0.2); /* Fondo semitransparente */
+    backdrop-filter: blur(10px); /* Efecto borroso */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra */
+    text-align: center;
+    
+    /* Borde con gradiente */
+    border: 3px solid transparent; /* Necesario para que el gradiente funcione */
+    border-image-source: linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff);
+    border-image-slice: 1; /* Asegura que el gradiente abarque todo el borde */
+  }
+  
+
 .registro-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .registro-titulo {
@@ -22,55 +34,134 @@
 }
 
 .registro-boton-inicio {
-    padding: 10px 15px;
-    background-color: #007bff;
+    width: 40%;
+    padding: 12px;
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: bold;
     color: white;
+    background-color: #000000;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 0.9rem;
     transition: background-color 0.3s ease;
 }
 
 .registro-boton-inicio:hover {
-    background-color: #0056b3;
+    background-color: #333;
 }
 
-.registro-form {
+.registro-form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.registro-label {
+    font-size: 0.9rem;
+    color: #000000;
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.registro-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f0efef;
+    font-size: 0.95rem;
+}
+
+.registro-boton-enviar {
+    width: 70%;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(90deg, #9b38dd, #17a2b8);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.registro-boton-enviar:hover {
+    background: linear-gradient(90deg, #6b2188, #138496);
+}
+
+.input-wrapper {
+    position: relative;
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    align-items: center;
 }
 
-.form-group {
+.input-icon {
+    position: absolute;
+    left: 10px;
+    color: #aaa;
+    font-size: 1.2rem;
+    pointer-events: none;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #aaa;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.toggle-password:focus {
+    outline: none;
+}
+
+.registro-input {
+    width: 100%;
+    padding: 10px 10px 10px 40px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.registro-input:focus {
+    border-color: #007BFF;
+}
+
+.registro-terminos {
     display: flex;
-    flex-direction: column;
-    gap: 5px;
+    align-items: center;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    text-align: left;
 }
 
-label {
+.registro-terminos input {
+    margin-right: 7px;
+}
+
+.registro-terminos-enlace {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.registro-terminos-enlace:hover, .registro-iniciar-enlace:hover {
+    text-decoration: underline;
+}
+
+.registro-iniciar-sesion {
+    margin-top: 15px;
     font-size: 0.9rem;
     color: #555;
 }
 
-input {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1rem;
-}
-
-.registro-boton-enviar {
-    padding: 10px 15px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
+.registro-iniciar-enlace {
+    color: #000;
+    font-weight: bold;
     cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-.registro-boton-enviar:hover {
-    background-color: #218838;
+    text-decoration: none;
 }

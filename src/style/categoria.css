@@ -1,15 +1,23 @@
 /* Estilo para el contenedor principal de la categoría */
-.categoria-container{
+.categoria-container, .categoria-header, .categoria-item {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Asegúrate de que el padding no cause el desbordamiento */
+}
+
+.categoria-container {
     max-width: 1000px;
     margin: auto;
     margin-top: 3vh;
+    box-sizing: border-box;
+    overflow-x: hidden; /* Oculta cualquier desbordamiento horizontal */
 }
 
 .categoria-header{
     display: flex;
-    justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
+    box-sizing: border-box;
 }
 
 .categoria-item {
@@ -19,6 +27,8 @@
     background: white;
     transition: background-color 0.3s ease;
     box-shadow: 0 3px 10px rgb(204, 204, 204);
+    font-size: 1.3rem;
+    box-sizing: border-box;
 }
 
 .categoria-contai-cate{
@@ -26,6 +36,7 @@
     justify-content: space-between;
     align-items: center;
     font-weight: bold;
+    box-sizing: border-box;
 }
 
 .categoria-button {
@@ -36,14 +47,26 @@
     border-radius: 10px;
     background-color: #000;
     cursor: pointer;
+    
+    box-sizing: border-box;
 }
 
 
 .categoria-titulo {
     text-align: center;
-    font-size: 24px;
+    font-size: 2rem;
     font-weight: bold;
-    margin: 10px 0;
+    margin: auto;
+    
+    box-sizing: border-box;
+}
+
+.categoria-contin-prin {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* Eliminar flex-wrap: wrap; si no es necesario */
+    box-sizing: border-box;
 }
 
 /* Lista de categorías */
@@ -51,13 +74,8 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-}
-
-
-/* Estilo de cada categoría */
-
-.categoria-item:hover {
-    background-color: #f0f0f0;
+    
+    box-sizing: border-box;
 }
 
 /* Información de la categoría (icono y nombre) */
@@ -65,17 +83,18 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    max-width: 100%;
+    overflow: hidden; /* Evita el desbordamiento de contenido */
+    box-sizing: border-box;
 }
 
-.categoria-info span {
-    font-size: 16px;
-    color: #333;
-}
 
 /* Estilo del total de cada categoría */
 .categoria-total {
     font-weight: bold;
     color: #333;
+    
+    box-sizing: border-box;
 }
 
 /* Estilos para los detalles de la categoría */
@@ -84,30 +103,54 @@
     padding-left: 20px;
     border-left: 3px solid #000;
     margin-bottom: 20px;
+    
+    box-sizing: border-box;
 }
 
 /* Estilo para las fechas de los gastos */
 .categoria-detalle-fecha {
-    margin-top: 10px;
-    padding-left: 20px;
+    margin-top: 30px;
+    padding: 10px;
+    border: 1px solid #f1f1f1;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.categoria-detalle-fecha:hover {
+    background-color: #e9e9e9; /* Color de fondo al pasar el mouse */
+    
+    box-sizing: border-box;
 }
 
 .detalle-item {
     display: flex;
     justify-content: space-between;
     padding: 5px 0;
-    border-bottom: 1px solid #eee;
+    
+    box-sizing: border-box;
+}
+
+.fecha-categoria-list{
+    border-bottom: 1px solid #ccc;
+    font-size: 1.2rem;
+    
+    box-sizing: border-box;
 }
 
 /* Agregar estilo a la descripción y cantidad de cada gasto */
 .detalle-item span {
     font-size: 1rem;
     color: #333;
+    
+    box-sizing: border-box;
 }
 
 .detalle-item span:last-child {
     font-weight: bold;
-    color: #007BFF;
+    color: #eb1010;
 }
 
 /* Estilo para los botones de editar y eliminar */
@@ -116,62 +159,28 @@
     gap: 10px;
 }
 
-.lista-editar,
-.lista-eliminar {
-    background: none;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 5px 10px;
-    cursor: pointer;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+.categoria-volver-bitin {
+    display: block; /* Para que el botón ocupe todo el ancho disponible si es necesario */
+    margin: 20px auto 0; /* Centrado horizontal */
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 1rem; /* Tamaño de la fuente */
+    font-weight: bold; /* Negrita para el texto */
+    color: #fff; /* Texto blanco */
+    background-color: #000; /* Fondo negro */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el puntero al pasar sobre el botón */
+    text-align: center; /* Asegura el texto centrado */
+    transition: background-color 0.3s ease; /* Animación suave al interactuar */
+    
+    box-sizing: border-box;
 }
 
-.lista-editar {
-    color: #007bff;
-    border-color: #007bff;
+.categoria-volver-bitin:hover {
+    background-color: #333; /* Cambia el color de fondo al pasar el mouse */
 }
 
-.lista-editar:hover {
-    background-color: #007bff;
-    color: #fff;
+.cualquier-nombre{
+    padding-bottom: 20px;
 }
 
-.lista-eliminar {
-    color: #dc3545;
-    border-color: #dc3545;
-}
-
-.lista-eliminar:hover {
-    background-color: #dc3545;
-    color: #fff;
-}
-
-/* Botón para cargar más */
-.lista-cargar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px auto;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #28a745;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.lista-cargar:hover {
-    background-color: #218838;
-}
-
-.lista-cargar:before {
-    content: "🔄";
-    margin-right: 8px;
-    font-size: 18px;
-}

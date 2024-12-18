@@ -31,7 +31,7 @@ const GastosCategoria = () => {
     const navigate = useNavigate();
     const { usuario } = useAuth();
     const [gastosPorCategoria, setGastosPorCategoria] = useState({});
-    const [categoriaSeleccionada, setCategoriaSeleccionada] = useState(null);
+    const [categoriasAbiertas, setCategoriasAbiertas] = useState({}); // Estado para las categorías abiertas
 
     useEffect(() => {
         if (!usuario) return;
@@ -70,66 +70,75 @@ const GastosCategoria = () => {
         return format(fromUnixTime(fecha), "dd 'de' MMMM 'de' yyyy", { locale: es });
     };
 
+    const toggleCategoria = (nombreCategoria) => {
+        setCategoriasAbiertas(prevState => ({
+            ...prevState,
+            [nombreCategoria]: !prevState[nombreCategoria] // Cambia el estado de la categoría seleccionada
+        }));
+    };
+
     return (
-        <div>
-            <Header />             
-        <div className="categoria-container">
-            <div className="categoria-header">
-                <button onClick={() => navigate("/")} className="categoria-button">
-                    <FontAwesomeIcon icon={faArrowLeft} />
-                </button>
-                <h1 className="categoria-titulo">Gastos por Categoría</h1>
-            </div>
+        <div className="cualquier-nombre">
+            <Header />
+            <div className="categoria-container">
+                <div className="categoria-header">
+                    <button onClick={() => navigate("/")} className="categoria-button">
+                        <FontAwesomeIcon icon={faArrowLeft} />
+                    </button>
+                    <h1 className="categoria-titulo">Gastos por Categoría</h1>
+                </div>
 
-            <div className="categorias-lista">
-                {categorias.map((categoria) => {
-                    const { nombre, icono } = categoria;
-                    const total = gastosPorCategoria[nombre]?.total || 0;
-
-                    return (
-                        <div key={nombre} className="categoria-item">
-                            <div className="categoria-contai-cate">
-                                <div className="categoria-info" onClick={() => setCategoriaSeleccionada(categoriaSeleccionada === nombre ? null : nombre)}>
-                                    <FontAwesomeIcon icon={icono} />
-                                    <span>{nombre}</span>
+                <div className="categoria-contin-prin">
+                    {categorias.map((categoria) => {
+                        const { nombre, icono } = categoria;
+                        const total = gastosPorCategoria[nombre]?.total || 0;
+                        return (
+                            <div key={nombre} className="categoria-item">
+                                <div className="categoria-contai-cate">
+                                    <div className="categoria-info" onClick={() => toggleCategoria(nombre)}>
+                                        <FontAwesomeIcon icon={icono} />
+                                        <span>{nombre}</span>
+                                    </div>
+                                    <span className="categoria-total">{formatearCantidad(total)}</span>
                                 </div>
-                                <span className="categoria-total">{formatearCantidad(total)}</span>
-                            </div>
-                            <div>
-                            {categoriaSeleccionada === nombre && (
-                                <div className="categoria-detalle">
-                                    {gastosPorCategoria[nombre]?.detalles.length > 0 ? (
-                                        Object.entries(
-                                            gastosPorCategoria[nombre].detalles.reduce((agrupados, gasto) => {
-                                                const fecha = formatearFecha(gasto.fecha);
-                                                if (!agrupados[fecha]) {
-                                                    agrupados[fecha] = [];
-                                                }
-                                                agrupados[fecha].push(gasto);
-                                                return agrupados;
-                                            }, {})
-                                        ).map(([fecha, gastos]) => (
-                                            <div key={fecha} className="categoria-detalle-fecha">
-                                                <h3>{fecha}</h3>
-                                                {gastos.map((gasto) => (
-                                                    <div key={gasto.id} className="detalle-item">
-                                                        <span>{gasto.descripcion}</span>
-                                                        <span>{formatearCantidad(gasto.cantidad)}</span>
+                                <div>
+                                    {categoriasAbiertas[nombre] && ( // Verifica si la categoría está abierta
+                                        <div className="categoria-detalle">
+                                            {gastosPorCategoria[nombre]?.detalles.length > 0 ? (
+                                                Object.entries(
+                                                    gastosPorCategoria[nombre].detalles.reduce((agrupados, gasto) => {
+                                                        const fecha = formatearFecha(gasto.fecha);
+                                                        if (!agrupados[fecha]) {
+                                                            agrupados[fecha] = [];
+                                                        }
+                                                        agrupados[fecha].push(gasto);
+                                                        return agrupados;
+                                                    }, {})
+                                                ).map(([fecha, gastos]) => (
+                                                    <div key={fecha} className="categoria-detalle-fecha">
+                                                        <h3 className="fecha-categoria-list">{fecha}</h3>
+                                                        {gastos.map((gasto) => (
+                                                            <div key={gasto.id} className="detalle-item">
+                                                                <span>{gasto.descripcion}</span>
+                                                                <span>{formatearCantidad(gasto.cantidad)}</span>
+                                                            </div>
+                                                        ))}
                                                     </div>
-                                                ))}
-                                            </div>
-                                        ))
-                                    ) : (
-                                        <p>No hay gastos para esta categoría</p>
+                                                ))
+                                            ) : (
+                                                <p>No hay gastos para esta categoría</p>
+                                            )}
+                                        </div>
                                     )}
                                 </div>
-                            )}
                             </div>
-                        </div>
-                    );
-                })}
+                        );
+                    })}
+                </div>
             </div>
-        </div>
+            <button className="categoria-volver-bitin" onClick={() => navigate("/")} >
+                volver
+            </button>
         </div>
     );
 };

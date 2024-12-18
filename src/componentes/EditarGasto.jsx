@@ -4,7 +4,6 @@ import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 import Header from "./Header.jsx";
 import Select from "./Select.jsx";
-import DatePicker from "./DatePicker.jsx";
 import { getUnixTime } from "date-fns";
 import { useAuth } from "../contextos/AuthContext";
 
@@ -87,7 +86,12 @@ const EditarGasto = () => {
             <Header />
             <div className="App-filtrado">
                 <Select categoria={categoria} setCategoria={setCategoria} />
-                <DatePicker fecha={fecha} setFecha={setFecha} />
+                <input
+                            type="date"
+                            value={fecha.toISOString().split('T')[0]} // Convierte la fecha al formato YYYY-MM-DD
+                            onChange={(e) => setFecha(new Date(e.target.value))}
+                            className="input-fecha"
+                        />
             </div>
             <form className="registro-form" onSubmit={handleSubmit}>
                 <div className="form-group">

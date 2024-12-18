@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Header from './Header.jsx';
 import Select from "./Select.jsx";
-import DatePicker from "./DatePicker.jsx";
 import agregarGasto from "../firebase/agregarGasto.js";
 import { getUnixTime } from "date-fns/getUnixTime";
 import { useAuth } from '../contextos/AuthContext.js';
@@ -16,7 +15,7 @@ const App = () => {
     const [categoria, setCategoria] = useState('Hogar');
     const [fecha, setFecha] = useState(new Date());
     const [gastos, setGastos] = useState([]);
-    const [saldoTotal, setSaldoTotal] = useState(0); 
+    const [saldoTotal, setSaldoTotal] = useState(0);
     const [saldoActual, setSaldoActual] = useState(0);
     const { usuario } = useAuth();
 
@@ -24,7 +23,7 @@ const App = () => {
         if (usuario && usuario.uid) {
             obtenerGastos(usuario.uid)
                 .then(gastos => {
-                    setGastos(gastos);  // Establece los gastos obtenidos
+                    setGastos(gastos);
                 })
                 .catch(error => console.log(error));
         }
@@ -38,7 +37,7 @@ const App = () => {
                     const docSnap = await getDoc(docRef);
                     if (docSnap.exists()) {
                         const saldo = docSnap.data().saldo || 0;
-                        setSaldoTotal(saldo); // Establece el saldo total del usuario
+                        setSaldoTotal(saldo);
                     }
                 } catch (error) {
                     console.error("Error al obtener el saldo:", error);
@@ -51,14 +50,14 @@ const App = () => {
     useEffect(() => {
         const saldoGastos = gastos.reduce((total, gasto) => total + parseFloat(gasto.cantidad || 0), 0);
         const saldoRestante = saldoTotal - saldoGastos;
-        setSaldoActual(saldoRestante); // Establece el saldo actual
+        setSaldoActual(saldoRestante);
     }, [gastos, saldoTotal]);
 
     const handleChange = (e) => {
         if (e.target.name === 'Descripcion') {
             setDescripcion(e.target.value);
         } else if (e.target.name === 'cantidad') {
-            setCantidad(e.target.value.replace(/[^0-9.]/g, ''));  // Filtra solo números y puntos
+            setCantidad(e.target.value.replace(/[^0-9.]/g, ''));
         }
     };
 
@@ -68,7 +67,7 @@ const App = () => {
             const docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
                 const saldo = docSnap.data().saldo || 0;
-                actualizarSaldoTotal(saldo); // Actualiza el saldo localmente
+                actualizarSaldoTotal(saldo);
             }
         } catch (error) {
             console.error("Error al obtener el saldo:", error);
@@ -78,33 +77,32 @@ const App = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         let canti = parseFloat(cantidad);
-    
+
         if (!usuario || !usuario.uid) {
             alert("Debes iniciar sesión para agregar un gasto.");
             return;
         }
-    
+
         if (descripcion !== '' && cantidad !== '') {
             if (canti) {
                 agregarGasto({
                     categoria: categoria,
                     descripcion: descripcion,
                     cantidad: canti,
-                    fecha: getUnixTime(fecha),  // Convierte la fecha a formato UNIX
-                    uidusuario: usuario.uid  // Asegúrate de que esto no sea undefined
+                    fecha: getUnixTime(fecha),
+                    uidusuario: usuario.uid
                 })
-                .then(() => {
-                    // Actualiza el saldo total después de agregar el gasto
-                    obtenerSaldoUsuario(usuario.uid);
-                    
-                    setCategoria('Hogar');
-                    setDescripcion('');
-                    setCantidad('');
-                    setFecha(new Date());
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
+                    .then(() => {
+                        obtenerSaldoUsuario(usuario.uid);
+
+                        setCategoria('Hogar');
+                        setDescripcion('');
+                        setCantidad('');
+                        setFecha(new Date());
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
             } else {
                 console.log('Debes ingresar valores correctos');
             }
@@ -114,16 +112,11 @@ const App = () => {
     };
 
     const actualizarSaldoTotal = (nuevoSaldo) => {
-        setSaldoTotal(nuevoSaldo);  // Actualiza el saldo total localmente
+        setSaldoTotal(nuevoSaldo);
     };
 
-    // Calcular el total de los ingresos
     const ingresos = saldoTotal;
-
-    // Calcular el total de los gastos
     const gastosTotal = gastos.reduce((total, gasto) => total + parseFloat(gasto.cantidad || 0), 0);
-
-    // Calcular el balance (ingresos - gastos)
     const balance = ingresos - gastosTotal;
 
     return (
@@ -146,30 +139,35 @@ const App = () => {
                 </div>
 
                 <div className="seccion-gasto">
-                    <div className="titul-agregar">
-                        <h2>Agregar Nuevo Gasto</h2>
-                    </div>
                     <div className="App-filtrado">
                         <Select categoria={categoria} setCategoria={setCategoria} />
-                        <DatePicker fecha={fecha} setFecha={setFecha} />
+                        <h2 className="titul-agregar" >Nuevo Gasto</h2>
+                        <input
+                            type="date"
+                            value={fecha.toISOString().split('T')[0]} // Convierte la fecha al formato YYYY-MM-DD
+                            onChange={(e) => setFecha(new Date(e.target.value))}
+                            className="input-fecha"
+                        />
                     </div>
-                    <form className="registro-form" onSubmit={handleSubmit}>
-                        <div className="form-group">
+                    <form className="registro-form-ingreso" onSubmit={handleSubmit}>
+                        <div className="form-group-ingres">
                             <input
                                 type="text"
                                 name="Descripcion"
                                 value={descripcion}
                                 onChange={handleChange}
                                 placeholder="Descripción"
+                                className="input-ingreso"
                             />
                         </div>
-                        <div className="form-group">
+                        <div className="form-group-ingres">
                             <input
                                 type="text"
                                 name="cantidad"
                                 value={cantidad}
                                 onChange={handleChange}
                                 placeholder="$0.00"
+                                className="input-ingreso"
                             />
                         </div>
                         <button type="submit" className="btn-agregar-gasto">

@@ -1,188 +1,142 @@
+/* Estilo general para el contenedor de la lista */
 .lista-container {
     max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
-    color: white;
+    margin: auto;
+    margin-top: 3vh;
 }
 
+/* Navbar con el botón de retroceder y el título */
 .lista-navbar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
 }
 
+/* Botón de categoría (retroceder) */
 .categoria-button {
-    background: none;
-    border: 1px solid white;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    border-radius: 10px;
+    background-color: #000;
     cursor: pointer;
-    font-size: 18px;
 }
 
+/* Título de la lista */
 .lista-titulo {
+    text-align: center;
     font-size: 2rem;
     font-weight: bold;
+    margin: auto;
 }
 
-.categoria-button:hover {
-    scale: 1.1;
-}
-
-.fecha-titul{
-    text-align: center;
-}
-
-.lista-container-gasto {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.lista-contact {
-    border-radius: 8px;
+/* Estilo para cada grupo de gastos por fecha */
+.lista-fecha {
     padding: 15px;
-    background-color: #f9f9f9;
-    margin-bottom: .2rem;
-}
-
-.lista-contatin-opciones{
-    display: flex;
-    align-items: center;
-}
-
-.lista-categoria {
-    display: flex;
-    align-items: center;
-    flex: 1;
-    font-weight: bold;
-    font-size: 16px;
-    color: #555;
-}
-
-.lista-categoria:before {
-    content: "📁";
-    margin-right: 8px;
-    font-size: 18px;
-}
-
-.lista-categoria[data-categoria="hogar"]:before {
-    content: "🏠";
-}
-
-.lista-categoria[data-categoria="comida"]:before {
-    content: "🍴";
-}
-
-.lista-categoria[data-categoria="transporte"]:before {
-    content: "🚗";
-}
-
-.lista-categoria[data-categoria="salud"]:before {
-    content: "💊";
-}
-
-.lista-categoria[data-categoria="otros"]:before {
-    content: "🛠️";
-}
-
-.lista-categoria[data-categoria="ropa"]:before {
-    content: "👚";
-}
-
-.lista-categoria[data-categoria="cuentas y pagos"]:before {
-    content: "💳";
-}
-
-.lista-categoria[data-categoria="salud e higiene"]:before {
-    content: "🧴";
-}
-
-.lista-categoria[data-categoria="diversion"]:before {
-    content: "🎉";
-}
-
-.lista-descripcion {
-    flex: 2;
-    text-align: center;
-    font-size: 1rem;
-    color: #666;
-}
-
-.lista-cantidad {
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-    flex: 1;
-    text-align: center;
-}
-
-.lista-botones {
-    display: flex;
-    gap: 10px;
-}
-
-.lista-editar,
-.lista-eliminar {
-    background: none;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 5px 10px;
+    width: 100%;
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 14px;
+    background: white;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 3px 10px rgb(204, 204, 204);
+    margin-bottom: 10px;  /* Espacio entre fechas */
+}
+
+/* Estilo para cada item dentro de la lista */
+.lista-item {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+}
+
+.lista-item:hover {
+    background-color: #e9e9e9; /* Color de fondo al pasar el mouse */
+}
+
+/* Estilos para los iconos */
+.lista-icono {
+    margin-right: 10px;
+    font-size: 1.5rem;
+}
+
+/* Estilos para la descripción y categoría */
+.lista-descripcion {
+    flex-grow: 1; /* Hace que la descripción ocupe todo el espacio disponible */
+    font-size: 1rem;
+    text-align: center;
+    margin-right: 20px; /* Espacio entre la descripción y los botones */
+}
+
+/* Estilo para la cantidad */
+.lista-cantidad {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-right: 20px; /* Espacio entre la cantidad y los botones */
+}
+
+/* Contenedor para los botones de editar y eliminar */
+.lista-acciones {
     display: flex;
-    align-items: center;
-    gap: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    gap: 10px; /* Espacio entre los botones */
 }
 
-.lista-editar {
-    color: #007bff;
-    border-color: #007bff;
-}
-
-.lista-editar:hover {
-    background-color: #007bff;
-    color: #fff;
-}
-
-.lista-eliminar {
-    color: #dc3545;
-    border-color: #dc3545;
-}
-
-.lista-eliminar:hover {
-    background-color: #dc3545;
-    color: #fff;
-}
-
+/* Estilo para cuando no hay registros de gastos */
 .lista-sinregistro {
     text-align: center;
-    color: #999;
-    font-size: 16px;
-    margin: 20px 0;
+    font-size: 1.2rem;
+    color: #777;
+    padding: 20px;
 }
 
+/* Estilo para el botón de cargar más */
 .lista-cargar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px auto;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #28a745;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .lista-cargar:hover {
-    background-color: #218838;
+    background-color: #0056b3; /* Cambia el color del botón al pasar el ratón */
 }
 
-.lista-cargar:before {
-    content: "🔄";
-    margin-right: 8px;
-    font-size: 18px;
+.lista-detalle{
+    display: flex;
+    width: 100%;
 }
+
+.lista-editar,
+.lista-eliminar {
+    background: none;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    color: #000000;
+    align-items: center;
+    gap: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.lista-editar:hover, .lista-eliminar:hover {
+    background-color: #000000;
+    color: #fff;
+}
+
+.flechitas-para-cargar {
+    margin-right: 5px;
+}
+
+
+

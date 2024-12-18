@@ -10,6 +10,7 @@
 .logito {
     width: 200px;
     height: auto;
+    filter: grayscale(1) brightness(0);
   }
 
 .header-nav {
@@ -22,7 +23,7 @@
 .header-container-opciones {
     display: flex;
     align-items: center;
-    gap: 5rem;
+    gap: 5vw;
     border: 1px solid transparent;
     border-radius: 16px;
     padding: 0 1.5rem;
@@ -37,7 +38,7 @@
     border: none;
     border-radius: 8px;
     padding: 10px;
-    color: rgb(169, 33, 187);
+    color: rgb(0, 0, 0);
     cursor: pointer;
     background: none;
     transition: background 0.5s, border 0.3s;
@@ -50,24 +51,24 @@
 
 .header-diamante-icon {
     margin-right: 5px;  /* Espacio entre el icono y el nombre */
-    color: #ff00ea;     /* Color dorado para el diamante */
-    font-size: 20px;     /* Tamaño del icono */
+    color: #000000;     /* Color dorado para el diamante */
+    font-size: 1.5rem;     /* Tamaño del icono */
   }
 
 .header-link:hover {
-    background: rgb(255, 165, 255);
+    background: rgb(197, 197, 197);
     border-radius: 8px;
 }
 
 .header-link.active {
-    background: rgb(255, 165, 255);
+    background: rgb(197, 197, 197);
     border-radius: 8px;
-    color: rgb(140, 28, 155);
+    color: rgb(0, 0, 0);
 }
 
 .header-perfil-container.active .header-link {
-    background: rgb(255, 165, 255);
-    color: rgb(140, 28, 155);
+    background: rgb(197, 197, 197);
+    color: rgb(0, 0, 0);
     border-radius: 8px;
 }
 

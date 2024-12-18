@@ -1,0 +1,121 @@
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  background-image: url('../imagenes/fondo.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  perspective: 1000px; /* Habilita el efecto 3D */
+  overflow: hidden;
+}
+
+.auth-form {
+  position: relative;
+  width: 400px;
+  height: 300px;
+  margin: 0 5px; /* Espaciado entre los formularios */
+  transform-style: preserve-3d;
+  transition: transform 1s ease;
+}
+
+.card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  backface-visibility: hidden; /* Oculta la cara trasera cuando no está de frente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  backdrop-filter: blur(10px); /* Efecto borroso */
+}
+
+.card.login-back {
+  background: rgb(45, 4, 73);
+  transform: rotateY(180deg);
+  padding: 40px;
+  height: 620px;
+  bottom: -160px;
+  left: 10px;
+}
+
+.card.register-back {
+  background: rgb(0, 0, 0);
+  transform: rotateY(180deg);
+  height: 488px;
+  bottom: -96px;
+  right: 10px;
+}
+
+.login-contenttin {
+  transform: rotateY(0deg); /* Login inicia en la posición frontal */
+}
+
+.register-contenttin {
+  transform: rotateY(180deg); /* Registro inicia en la posición trasera */
+}
+
+.flipped-front {
+  transform: rotateY(0deg);
+}
+
+.flipped-back {
+  transform: rotateY(180deg);
+}
+
+.register-front {
+  backdrop-filter: blur(10px); /* Efecto borroso */
+  height: 620px;
+  width: 410px;
+  bottom: -160px;
+}
+
+.card.login-back h2, 
+.card.register-back h2 {
+  font-family: "Arial", sans-serif;
+  font-size: 36px;
+  line-height: 40px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #9b38dd, #17a2b8); /* Gradiente de colores */
+  -webkit-background-clip: text; /* Aplica el gradiente al área del texto */
+  -webkit-text-fill-color: transparent; /* Hace el texto transparente para mostrar el gradiente */
+}
+
+
+.card.login-back::before,
+.card.register-back::before {
+  content: "";
+  position: absolute;
+  width: calc(100% + 10px);
+  height: calc(100% + 10px);
+  border: 3px dashed rgb(45, 4, 73); /* Bordes decorativos externos */
+  border-radius: 16px;
+  z-index: -1;
+}
+
+.mensajito-registrico {
+  color: white;
+  margin: 2rem 0 5rem 0;
+}
+
+/* Estilo para el contenedor de la imagen */
+.image-container {
+  width: 80%;  /* 80% del ancho de la pantalla */
+  border-radius: 50%; /* Bordes redondeados */
+  margin: auto;
+  background: rgb(122, 9, 122);
+  box-shadow: 0px 0px 30px rgba(226, 4, 226, 0.767); /* Sombra borrosa más grande */
+}
+
+/* Estilo para la imagen */
+.cartera-image {
+  width: 100%;
+}
+
