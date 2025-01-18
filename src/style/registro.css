@@ -9,16 +9,14 @@
     max-width: 100%;
     width: 100%;
     padding: 30px;
-    border-radius: 15px; /* Bordes redondeados */
-    background: rgba(255, 255, 255, 0.2); /* Fondo semitransparente */
-    backdrop-filter: blur(10px); /* Efecto borroso */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra */
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     text-align: center;
-    
-    /* Borde con gradiente */
-    border: 3px solid transparent; /* Necesario para que el gradiente funcione */
+    border: 3px solid transparent;
     border-image-source: linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff);
-    border-image-slice: 1; /* Asegura que el gradiente abarque todo el borde */
+    border-image-slice: 1;
   }
   
 
@@ -165,3 +163,32 @@
     cursor: pointer;
     text-decoration: none;
 }
+
+.registro-notificacion {
+    position: fixed;
+    top: -60px;
+    right: -100px;
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    animation: slideInOut 5s forwards;
+    z-index: 1000;
+  }
+  
+  @keyframes slideInOut {
+    0% {
+      right: -100px;
+    }
+    10% {
+      right: 20px;
+    }
+    90% {
+      right: 20px;
+    }
+    100% {
+      right: -100px;
+    }
+  }
+  

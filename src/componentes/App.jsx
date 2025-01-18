@@ -8,6 +8,9 @@ import { obtenerGastos } from "../firebase/obtenerGastos.js";
 import { db } from '../firebase/firebaseConfig';
 import '../style/app.css';
 import { doc, getDoc } from "firebase/firestore";
+import imagen1 from "../imagenes/imagen 1.png";
+import imagen2 from "../imagenes/imagen2.png";
+import Alertasaldo from "./Alertasaldo.jsx";
 
 const App = () => {
     const [descripcion, setDescripcion] = useState('');
@@ -17,6 +20,7 @@ const App = () => {
     const [gastos, setGastos] = useState([]);
     const [saldoTotal, setSaldoTotal] = useState(0);
     const [saldoActual, setSaldoActual] = useState(0);
+    const [mensajeExito, setMensajeExito] = useState(''); // Estado para el mensaje de éxito
     const { usuario } = useAuth();
 
     useEffect(() => {
@@ -99,6 +103,10 @@ const App = () => {
                         setDescripcion('');
                         setCantidad('');
                         setFecha(new Date());
+
+                        // Mostrar mensaje de éxito
+                        setMensajeExito("El gasto fue ingresado con éxito!");
+                        setTimeout(() => setMensajeExito(''), 3000); // Oculta el mensaje después de 3 segundos
                     })
                     .catch((error) => {
                         console.log(error);
@@ -120,9 +128,15 @@ const App = () => {
     const balance = ingresos - gastosTotal;
 
     return (
-        <div>
+        <div className="invisible">
             <Header />
+
             <div className="app-contain-principal">
+                {mensajeExito && (
+                    <div className="mensaje-exito">
+                        {mensajeExito}
+                    </div>
+                )}
                 <div className="app-contain-saldos">
                     <div className="saldo-totalito">
                         <p className="titulo-ingresado">Ingresos</p>
@@ -141,7 +155,7 @@ const App = () => {
                 <div className="seccion-gasto">
                     <div className="App-filtrado">
                         <Select categoria={categoria} setCategoria={setCategoria} />
-                        <h2 className="titul-agregar" >Nuevo Gasto</h2>
+                        <h2 className="titul-agregar">Nuevo Gasto</h2>
                         <input
                             type="date"
                             value={fecha.toISOString().split('T')[0]} // Convierte la fecha al formato YYYY-MM-DD
@@ -149,33 +163,45 @@ const App = () => {
                             className="input-fecha"
                         />
                     </div>
-                    <form className="registro-form-ingreso" onSubmit={handleSubmit}>
-                        <div className="form-group-ingres">
-                            <input
-                                type="text"
-                                name="Descripcion"
-                                value={descripcion}
-                                onChange={handleChange}
-                                placeholder="Descripción"
-                                className="input-ingreso"
-                            />
+                    <div className="contan-imaginis">
+                        <div>
+                            <img src={imagen2} alt="Imagen debajo" className="imagen-debajo" />
                         </div>
-                        <div className="form-group-ingres">
-                            <input
-                                type="text"
-                                name="cantidad"
-                                value={cantidad}
-                                onChange={handleChange}
-                                placeholder="$0.00"
-                                className="input-ingreso"
-                            />
+                        <form className="registro-form-ingreso" onSubmit={handleSubmit}>
+                            <div className="form-group-ingres">
+                                <div className="input-con-imagen">
+                                    <input
+                                        type="text"
+                                        name="Descripcion"
+                                        value={descripcion}
+                                        onChange={handleChange}
+                                        placeholder="Descripción"
+                                        className="input-ingreso"
+                                    />
+                                </div>
+                            </div>
+                            <div className="form-group-ingres">
+                                <div className="input-con-imagen">
+                                    <input
+                                        type="text"
+                                        name="cantidad"
+                                        value={cantidad}
+                                        onChange={handleChange}
+                                        placeholder="$0.00"
+                                        className="input-ingreso"
+                                    />
+                                </div>
+                            </div>
+                            <button type="submit" className="btn-agregar-gasto">Agregar Gasto</button>
+                        </form>
+                        <div className="imagen-debajo">
+                            <img src={imagen1} alt="Imagen debajo" className="imagen-debajo-formulario" />
                         </div>
-                        <button type="submit" className="btn-agregar-gasto">
-                            Agregar Gasto
-                        </button>
-                    </form>
+                    </div>
+
                 </div>
             </div>
+            <Alertasaldo gastosTotal={gastosTotal} className="alerta-fija" />
         </div>
     );
 };

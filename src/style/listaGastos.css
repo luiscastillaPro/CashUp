@@ -3,6 +3,7 @@
     max-width: 1000px;
     margin: auto;
     margin-top: 3vh;
+    
 }
 
 /* Navbar con el botón de retroceder y el título */
@@ -34,13 +35,15 @@
 /* Estilo para cada grupo de gastos por fecha */
 .lista-fecha {
     padding: 15px;
-    width: 100%;
+    width: 90%;
+    margin: auto;
     border-radius: 10px;
     cursor: pointer;
-    background: white;
+    background: rgba(255, 255, 255, 0.678);
+    backdrop-filter: blur(10px);
     transition: background-color 0.3s ease;
-    box-shadow: 0 3px 10px rgb(204, 204, 204);
-    margin-bottom: 10px;  /* Espacio entre fechas */
+    margin-bottom: 1rem;  /* Espacio entre fechas */
+    box-shadow: 4px 4px 10px rgb(3, 3, 3);
 }
 
 /* Estilo para cada item dentro de la lista */
@@ -138,5 +141,161 @@
     margin-right: 5px;
 }
 
+.lista-editar-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
 
+.lista-item {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+}
 
+.lista-editar-form input,
+.lista-editar-form select {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.lista-container-gasto{
+    max-width: 100%; /* Evita que se expanda horizontalmente */
+    max-height: 75vh; /* Limita la altura para evitar desbordamiento vertical */
+    overflow-y: auto; /* Permite el desplazamiento vertical interno */
+    overflow-x: hidden;
+}
+
+.cargar-mas-boton{
+    margin-right: 5px;
+}
+
+.editar-descripcion{
+    width: 20rem;
+}
+
+.editar-cantidad{
+    width: 4rem;
+}
+
+.contenedor-editar-botones{
+    display: flex;
+    gap: 10px;
+}
+
+.editar-categoriaa{
+    width: 8rem;
+}
+
+/* Estilo responsivo para lista-container */
+@media (max-width: 700px) {
+    .lista-container {
+      width: 95%; /* Ajusta el ancho para pantallas pequeñas */
+      margin: auto;
+      margin-top: 2vh;
+    }
+  
+    .lista-titulo {
+      font-size: 1.8rem; /* Reduce el tamaño del título */
+    }
+  
+    .lista-fecha {
+      width: 100%; /* Ocupa todo el ancho disponible */
+      padding: 10px;
+      font-size: 0.9rem; /* Ajusta el tamaño de texto */
+    }
+  
+    .lista-item {
+      padding: 8px;
+      font-size: 0.9rem; /* Reduce el tamaño del texto */
+    }
+  
+    .lista-descripcion {
+      font-size: 0.9rem; /* Ajusta el tamaño de la descripción */
+      margin-right: 10px; /* Reduce el margen */
+    }
+  
+    .lista-cantidad {
+      font-size: 1rem; /* Ajusta el tamaño de la cantidad */
+      margin-right: 10px; /* Reduce el margen */
+    }
+  
+    .lista-acciones {
+      flex-wrap: wrap; /* Permite que los botones se acomoden en varias líneas */
+      gap: 5px; /* Reduce el espacio entre botones */
+    }
+  
+    .lista-editar,
+    .lista-eliminar {
+      padding: 5px 8px; /* Ajusta el tamaño de los botones */
+      font-size: 0.8rem; /* Reduce el tamaño del texto */
+    }
+  }
+  
+  /* Estilo adicional para pantallas aún más pequeñas */
+  @media (max-width: 500px) {
+    .lista-titulo {
+      font-size: 1.5rem; /* Reduce el tamaño del título aún más */
+    }
+  
+    .lista-fecha {
+      padding: 8px;
+      font-size: 0.8rem;
+    }
+  
+    .lista-item {
+      padding: 6px;
+      font-size: 0.8rem;
+    }
+  
+    .lista-descripcion {
+      font-size: 0.8rem;
+      margin-right: 5px;
+    }
+  
+    .lista-cantidad {
+      font-size: 0.9rem;
+      margin-right: 5px;
+    }
+  
+    .lista-editar,
+    .lista-eliminar {
+      font-size: 0.7rem;
+      padding: 4px 6px; /* Reduce aún más el tamaño de los botones */
+    }
+  }
+  
+  /* Estilo adicional para pantallas muy pequeñas (350px o menos) */
+  @media (max-width: 350px) {
+    .lista-titulo {
+      font-size: 1.2rem;
+    }
+  
+    .lista-item {
+      font-size: 0.7rem;
+      padding: 4px;
+    }
+  
+    .lista-descripcion {
+      font-size: 0.7rem;
+    }
+  
+    .lista-cantidad {
+      font-size: 0.8rem;
+    }
+  
+    .lista-editar,
+    .lista-eliminar {
+      font-size: 0.6rem;
+      padding: 3px 4px;
+    }
+  }
+  

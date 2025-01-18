@@ -21,14 +21,16 @@
 }
 
 .categoria-item {
+    width: 90%;
     padding: 15px;
     border-radius: 10px;
     cursor: pointer;
-    background: white;
+    background: rgba(255, 255, 255, 0.678);
+    backdrop-filter: blur(10px);
     transition: background-color 0.3s ease;
-    box-shadow: 0 3px 10px rgb(204, 204, 204);
     font-size: 1.3rem;
     box-sizing: border-box;
+    box-shadow: 0 3px 10px rgb(3, 3, 3);
 }
 
 .categoria-contai-cate{
@@ -43,30 +45,39 @@
     display: inline-block;
     padding: 10px 20px;
     font-size: 1rem;
-    color: #fff;
+    margin-left: 5px;
+    color: #000000;
     border-radius: 10px;
-    background-color: #000;
     cursor: pointer;
-    
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
     box-sizing: border-box;
+    box-shadow: 4px 4px 10px rgb(3, 3, 3);
 }
 
+.categoria-button:hover {
+    background-color: #333; /* Cambia el color de fondo al pasar el mouse */
+    color: white;
+}
 
 .categoria-titulo {
     text-align: center;
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: bold;
     margin: auto;
-    
     box-sizing: border-box;
 }
 
 .categoria-contin-prin {
     display: flex;
+    align-items: center;
     flex-direction: column;
-    gap: 10px;
-    /* Eliminar flex-wrap: wrap; si no es necesario */
+    gap: 1.3rem;
     box-sizing: border-box;
+    max-width: 100%; /* Evita que se expanda horizontalmente */
+    max-height: 70vh; /* Limita la altura para evitar desbordamiento vertical */
+    overflow-y: auto; /* Permite el desplazamiento vertical interno */
+    overflow-x: hidden; /* Oculta el desbordamiento horizontal */
 }
 
 /* Lista de categorías */
@@ -144,7 +155,6 @@
 .detalle-item span {
     font-size: 1rem;
     color: #333;
-    
     box-sizing: border-box;
 }
 
@@ -153,7 +163,6 @@
     color: #eb1010;
 }
 
-/* Estilo para los botones de editar y eliminar */
 .lista-botones {
     display: flex;
     gap: 10px;
@@ -165,15 +174,16 @@
     padding: 10px 20px; /* Espaciado interno */
     font-size: 1rem; /* Tamaño de la fuente */
     font-weight: bold; /* Negrita para el texto */
-    color: #fff; /* Texto blanco */
-    background-color: #000; /* Fondo negro */
+    color: #e4e4e4; /* Texto blanco */
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
     border: none; /* Sin borde */
     border-radius: 5px; /* Bordes redondeados */
     cursor: pointer; /* Cambia el puntero al pasar sobre el botón */
     text-align: center; /* Asegura el texto centrado */
     transition: background-color 0.3s ease; /* Animación suave al interactuar */
-    
     box-sizing: border-box;
+    box-shadow: 4px 4px 10px rgb(3, 3, 3);
 }
 
 .categoria-volver-bitin:hover {
@@ -181,6 +191,25 @@
 }
 
 .cualquier-nombre{
-    padding-bottom: 20px;
+    padding: 1.3rem 0 ;
 }
 
+/* Tamaño responsivo para .categoria-titulo */
+@media (max-width: 700px) {
+    .categoria-titulo {
+      font-size: 2.5rem; /* Reduce el tamaño del texto */
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .categoria-titulo {
+      font-size: 2rem; /* Reduce aún más para pantallas más pequeñas */
+    }
+  }
+  
+  @media (max-width: 350px) {
+    .categoria-titulo {
+      font-size: 1.5rem; /* Ajuste final para pantallas muy pequeñas */
+    }
+  }
+  
