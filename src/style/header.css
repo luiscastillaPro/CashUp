@@ -1,16 +1,28 @@
 .header {
     display: flex;
     align-items: center;
-    width: 100%;
-    padding: 1.5vh 7vw;
-    background: white;
-    box-shadow: 0 3px 10px rgb(204, 204, 204);
+    justify-content: space-between;
+    width: 60%;
+    padding: .6rem 1.5rem;
+    background: rgba(255, 255, 255, 0.445);
+    backdrop-filter: blur(10px);
+    box-shadow: 4px 4px 10px rgb(3, 3, 3);
+    margin: auto;
+    border-radius: 16px;
+    min-width: 980px;
+    position: relative; /* Esto asegura que el z-index funcione */
+    z-index: 1000; /* Asegúrate de que sea mayor al resto del contenido */
+}
+
+.invisible{
+    padding-top: 1.3rem;
+    height: 100vh;
 }
 
 .logito {
     width: 200px;
     height: auto;
-  }
+}
 
 .header-nav {
     flex: 1;
@@ -21,53 +33,55 @@
 
 .header-container-opciones {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 5rem;
+    gap: 2rem;
     border: 1px solid transparent;
     border-radius: 16px;
-    padding: 0 1.5rem;
 }
 
 .header-link {
-    display: flex;
+    display: inline-flex;
+    width: auto;
     align-items: center;
     text-decoration: none;
-    font-size: 1.4rem;
+    font-size: 20px;
     font-weight: bold;
     border: none;
     border-radius: 8px;
     padding: 10px;
-    color: rgb(169, 33, 187);
+    color: rgb(0, 0, 0);
     cursor: pointer;
     background: none;
     transition: background 0.5s, border 0.3s;
 }
 
-.header-saludo{
+.header-saludo {
     display: flex;
     align-items: center;
+    color: rgb(0, 0, 0);
 }
 
 .header-diamante-icon {
-    margin-right: 5px;  /* Espacio entre el icono y el nombre */
-    color: #ff00ea;     /* Color dorado para el diamante */
-    font-size: 20px;     /* Tamaño del icono */
-  }
+    margin-right: 5px;
+    color: rgb(0, 0, 0);
+    font-size: 1.5rem;
+}
 
 .header-link:hover {
-    background: rgb(255, 165, 255);
+    background: rgb(182, 32, 219);
     border-radius: 8px;
 }
 
 .header-link.active {
-    background: rgb(255, 165, 255);
+    background: rgb(182, 32, 219);
     border-radius: 8px;
-    color: rgb(140, 28, 155);
+    color: rgb(0, 0, 0);
 }
 
 .header-perfil-container.active .header-link {
-    background: rgb(255, 165, 255);
-    color: rgb(140, 28, 155);
+    background: rgb(182, 32, 219);
+    color: rgb(0, 0, 0);
     border-radius: 8px;
 }
 
@@ -77,7 +91,7 @@
 
 
 .header-cont-cerrar {
-    margin-left: auto; 
+    margin-left: auto;
 }
 
 .header-perfil-container {
@@ -86,15 +100,17 @@
 
 .header-desplegable {
     position: absolute;
-    top: 100%;
-    right: 0;
+    top: 115%;
+    left: -80px;
     background-color: #fff;
-    border: 1px solid #ddd;
+    border: 1px solid #8d8d8d;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 4px 4px 10px rgb(3, 3, 3);
     padding: 1rem;
     width: 250px;
-    z-index: 1000;
+    z-index: 999999;
+    background: rgb(222, 201, 236);
+    backdrop-filter: blur(10px);
 }
 
 .header-desplegable form {
@@ -109,15 +125,69 @@
     padding: 0.5rem;
     font-size: 1rem;
     border: 1px solid #ccc;
-    border-radius: 4px; 
+    border-radius: 4px;
 }
 
 .header-desplegable button {
-    background-color: #45a049;
-    color: #fff;
+    color: rgb(238, 238, 238);
     cursor: pointer;
 }
 
-.header-desplegable button:hover {
-    background-color: #3e8e41; 
-}
+/* Botón de menú hamburguesa */
+.hamburguesa {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: black;
+    cursor: pointer;
+  }
+  
+  /* Media query para pantallas menores a 1000px */
+  @media (max-width: 1000px) {
+    .header {
+      flex-wrap: wrap;
+      width: 60%;
+      min-width: 330px;
+    }
+  
+    .header-nav {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      background: rgb(235, 203, 238);
+      border-radius: 8px;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: 1000;
+      padding: 1rem;
+      box-shadow: 4px 4px 10px rgb(3, 3, 3);
+    }
+  
+    .header-link{
+        width: 100%;
+        
+    }
+
+    .header-nav.active {
+      display: flex;
+      width: 70%;
+      left: 16%;
+    }
+  
+    .header-container-opciones {
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+    }
+  
+    .hamburguesa {
+      display: block;
+    }
+  
+    .logito {
+      width: 120px;
+    }
+  }
+

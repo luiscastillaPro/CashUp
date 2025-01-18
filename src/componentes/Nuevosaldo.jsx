@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { db } from '../firebase/firebaseConfig';
 import { doc, setDoc } from "firebase/firestore";
 import { useAuth } from "../contextos/AuthContext";
+import "../style/nuevosaldo.css";
 
 const NuevoSaldo = ({ actualizarSaldoTotal }) => {
     const [mostrarFormulario, setMostrarFormulario] = useState(null); // Controla qué formulario se muestra
@@ -65,14 +66,14 @@ const NuevoSaldo = ({ actualizarSaldoTotal }) => {
     return (
         <div>
             <h2>Gestión de Saldo</h2>
-            <div>
-                <button onClick={() => setMostrarFormulario('ingresarValor')}>
-                    Ingresar Nuevo Valor
-                </button>
-                <button onClick={() => setMostrarFormulario('actualizarSaldo')}>
-                    Actualizar Saldo
-                </button>
-            </div>
+
+            <button
+                onClick={() => setMostrarFormulario(prev => prev === 'ingresarValor' ? null : 'ingresarValor')}
+                className="nuevo-valor"
+            >
+                Ingresar Nuevo Valor
+            </button>
+
 
             {mostrarFormulario === 'ingresarValor' && (
                 <form onSubmit={handleIngresarValor}>
@@ -92,9 +93,17 @@ const NuevoSaldo = ({ actualizarSaldoTotal }) => {
                             placeholder="Valor"
                         />
                     </div>
-                    <button type="submit">Guardar</button>
+                    <button type="submit" className="guardar-nuevo-saldo">Guardar</button>
                 </form>
             )}
+
+            <button
+                onClick={() => setMostrarFormulario(prev => prev === 'actualizarSaldo' ? null : 'actualizarSaldo')}
+                className="nuevo-valor"
+            >
+                Actualizar Saldo
+            </button>
+
 
             {mostrarFormulario === 'actualizarSaldo' && (
                 <form onSubmit={handleActualizarSaldo}>
@@ -106,7 +115,7 @@ const NuevoSaldo = ({ actualizarSaldoTotal }) => {
                             placeholder="Nuevo saldo"
                         />
                     </div>
-                    <button type="submit">Confirmar</button>
+                    <button type="submit" className="guardar-nuevo-saldo">Confirmar</button>
                 </form>
             )}
         </div>

@@ -1,12 +1,12 @@
 .layout-container {
     height: 100vh;
     width: 100vw;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-/* .layout-container {
-    background-image: url('../imagenes/segundofondo.jpeg');
+.layout-container {
+    background-image: url('../imagenes/nuevo-fondo.jpeg');
     background-size: cover;
-    background-position: center; 
     min-height: 100vh; 
-  } */
+}
  

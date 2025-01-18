@@ -1,0 +1,107 @@
+.alerta-saldo-container {
+    margin: 20px 0 0;
+    padding: 10px 0 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0; /* Lo posiciona en la parte inferior */
+    left: 0; /* Alineado a la izquierda */
+    width: 100%; /* Ocupa todo el ancho de la pantalla */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    background: black;
+  }
+
+  .input-monto-maximo {
+    width: 80px;
+    padding: 7px;
+    margin: 0px 5px;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .alerta-saldo-indicador {
+    padding: 15px;
+    display: flex;
+    font-size: 1.5rem;
+    justify-content: center;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #fff;
+    position: relative;
+    overflow: hidden; /* Oculta el contenido fuera del contenedor */
+    height: 60px; /* Ajusta según el tamaño de los párrafos */
+  }
+  
+  .marquee {
+    display: flex;
+    gap: 200px; /* Espaciado entre los párrafos */
+    position: absolute;
+    animation: slide 50s linear infinite; /* Duración y repetición infinita */
+  }
+  
+  .marquee p {
+    white-space: nowrap; /* Evita que los párrafos se rompan en varias líneas */
+  }
+  
+  @keyframes slide {
+    0% {
+      transform: translateX(30%); /* Empieza fuera por la derecha */
+    }
+    50% {
+      transform: translateX(-30%); /* Se mueve completamente fuera por la izquierda */
+    }
+    100% {
+      transform: translateX(30%); /* Vuelve a entrar por la derecha */
+    }
+  }
+  
+  .titulo-maximo {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #ececec;
+    text-shadow: 0px 4px 5px rgb(3, 3, 3);
+  }
+
+  @media (max-width: 768px) {
+    .alerta-saldo-indicador {
+        font-size: 1.3rem; /* Reduce tamaño del texto */
+        height: 50px; /* Reduce altura */
+    }
+
+    .marquee {
+        gap: 100px; /* Menor espacio entre textos */
+        animation: slide 50s linear infinite; /* Más rápido para pantallas pequeñas */
+    }
+
+    .input-monto-maximo {
+        width: 70px; /* Reduce ancho */
+        font-size: 0.9rem; /* Reduce tamaño de texto */
+    }
+
+    .titulo-maximo {
+        font-size: 1.2rem; /* Texto más pequeño */
+    }
+}
+  
+  @media (max-width: 480px) {
+    .alerta-saldo-indicador {
+        font-size: 0.9rem; /* Más pequeño para móviles */
+        height: 40px; /* Menor altura */
+    }
+
+    .marquee {
+        gap: 50px; /* Reduce aún más el espacio entre textos */
+        animation: slide 50s linear infinite; /* Más rápido en móviles */
+    }
+
+    .input-monto-maximo {
+        width: 60px; /* Más compacto */
+        font-size: 0.8rem; /* Texto más pequeño */
+        padding: 5px; /* Menor padding */
+    }
+
+    .titulo-maximo {
+        font-size: 1rem; /* Ajusta el tamaño del título */
+    }
+}

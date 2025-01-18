@@ -1,0 +1,15 @@
+.guardar-nuevo-saldo{
+    background: green;
+}
+
+.nuevo-valor{
+    background: rgb(0, 0, 0);
+}
+
+.guardar-nuevo-saldo:hover {
+    background: rgb(6, 175, 6);
+}
+
+.nuevo-valor:hover {
+    background: rgb(155, 15, 173);
+}

@@ -1,11 +1,9 @@
 import React from "react";
 import './style/layout.css';
 import App from './componentes/App.jsx';
-import EditarGasto from './componentes/EditarGasto.jsx';
 import ListaGasto from './componentes/ListaGastos.jsx';
 import GastosCategoria from './componentes/GastosCategoria.jsx';
-import Login from './componentes/Login.jsx';
-import Registro from './componentes/Registro.jsx';
+import AuthPage from './componentes/AuthPage.jsx';
 import NuevoSaldo from './componentes/Nuevosaldo.jsx';
 import { Route, Routes } from 'react-router-dom';
 import RutaPrivada from "./componentes/RutaPrivada.jsx";
@@ -13,9 +11,9 @@ import RutaPrivada from "./componentes/RutaPrivada.jsx";
 const Layout = () => {
   return (
     <div className="layout-container">
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/registro" element={<Registro />} />
+      <Routes className="invisible">
+        <Route path="/login" element={<AuthPage />} />
+        <Route path="/registro" element={<AuthPage />} />
         
         <Route path="/categorias" element={
           <RutaPrivada>
@@ -28,12 +26,6 @@ const Layout = () => {
             <ListaGasto />
           </RutaPrivada>
         } />
-        
-        <Route path="/editar/:id" element={
-          <RutaPrivada>
-            <EditarGasto />
-          </RutaPrivada>
-        } />
 
         <Route path="/perfil" element={
           <RutaPrivada>
@@ -41,12 +33,11 @@ const Layout = () => {
           </RutaPrivada>
         } />
         
-        <Route path="/" element={
-          <RutaPrivada>
+        <Route path="/"  element={
+          <RutaPrivada >
             <App />
           </RutaPrivada>
         } />
-        
       </Routes>
     </div>
   );
